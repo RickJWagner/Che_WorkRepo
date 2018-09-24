@@ -1,0 +1,235 @@
+Setting client pid to 15499
+SERVER: changeConfig: settings -> {"xml":{},"java":{"classPath":[],"externalDependencies":[],"home":null,"jdt":{"ls":{"vmargs":"-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication"}},"errors":{"incompleteClasspath":{"severity":"ignore"}},"configuration":{"updateBuildConfiguration":"interactive","maven":{"userSettings":null}},"trace":{"server":"off"},"import":{"gradle":{"enabled":true},"maven":{"enabled":true},"exclusions":["**/node_modules/**","**/.metadata/**","**/archetype-resources/**","**/META-INF/maven/**"]},"referencesCodeLens":{"enabled":false},"signatureHelp":{"enabled":false},"implementationsCodeLens":{"enabled":false},"format":{"enabled":true,"settings":{"url":null,"profile":null},"comments":{"enabled":true},"onType":{"enabled":true}},"saveActions":{"organizeImports":false},"contentProvider":{"preferred":null},"autobuild":{"enabled":true},"completion":{"overwrite":true,"guessMethodArguments":false,"favoriteStaticMembers":["org.junit.Assert.*","org.junit.Assume.*","org.junit.jupiter.api.Assertions.*","org.junit.jupiter.api.Assumptions.*","org.junit.jupiter.api.DynamicContainer.*","org.junit.jupiter.api.DynamicTest.*"],"importOrder":["java","javax","com","org"]},"progressReports":{"enabled":true},"debug":{"logLevel":"warn","settings":{"showHex":false,"showStaticVariables":true,"showQualifiedNames":false,"maxStringLength":0,"enableHotCodeReplace":true}},"test":{"report":{"position":"sideView"}}}}
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+  languageId = "xml"
+  version = 1
+  text = "<?xml version="1.0" encoding="UTF-8"?>\n<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">\n  <modelVersion>4.0.0</modelVersion>\n  <groupId>io.openshift.booster</groupId>\n  <artifactId>booster</artifactId>\n  <version>1.0.0-SNAPSHOT</version>\n  <name>Fuse :: Boosters :: Configmap</name>\n  <properties>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\n    <spring-boot.version>1.5.13.RELEASE</spring-boot.version>\n    <spring-cloud-kubernetes.version>0.2.0.RELEASE</spring-cloud-kubernetes.version>\n    <fuse.bom.version>7.0.1.fuse-000008-redhat-4</fuse.bom.version>\n    <!-- versions of Maven plugins -->\n    <fmp.version>3.5.33.fuse-000089-redhat-4</fmp.version>\n    <!-- version of Arquillian -->\n    <arquillian.cube.version>1.17.1</arquillian.cube.version>\n    <arquillian.version>1.4.0.Final</arquillian.version>\n    <openshift.client.version>2.6.3</openshift.client.version>\n  </properties>\n  <dependencyManagement>\n    <dependencies>\n      <dependency>\n        <groupId>org.jboss.redhat-fuse</groupId>\n        <artifactId>fuse-springboot-bom</artifactId>\n        <version>${fuse.bom.version}</version>\n        <type>pom</type>\n        <scope>import</scope>\n      </dependency>\n      <dependency>\n        <groupId>org.arquillian.cube</groupId>\n        <artifactId>arquillian-cube-bom</artifactId>\n        <version>${arquillian.cube.version}</version>\n        <scope>import</scope>\n        <type>pom</type>\n      </dependency>\n    </dependencies>\n  </dependencyManagement>\n  <dependencies>\n    <!-- spring-boot -->\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-web</artifactId>\n      <exclusions>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-starter-tomcat</artifactId>\n        </exclusion>\n      </exclusions>\n    </dependency>\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-undertow</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-actuator</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.springframework.cloud</groupId>\n      <artifactId>spring-cloud-starter-kubernetes-config</artifactId>\n      <version>${spring-cloud-kubernetes.version}</version>\n    </dependency>\n    <!-- camel -->\n    <dependency>\n      <groupId>org.apache.camel</groupId>\n      <artifactId>camel-spring-boot-starter</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.apache.camel</groupId>\n      <artifactId>camel-http-starter</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.apache.camel</groupId>\n      <artifactId>camel-servlet-starter</artifactId>\n    </dependency>\n    <dependency>\n      <groupId>org.apache.camel</groupId>\n      <artifactId>camel-jackson-starter</artifactId>\n    </dependency>\n    <!-- Test -->\n    <dependency>\n      <groupId>org.springframework.boot</groupId>\n      <artifactId>spring-boot-starter-test</artifactId>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>org.apache.camel</groupId>\n      <artifactId>camel-test</artifactId>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>io.fabric8</groupId>\n      <artifactId>openshift-client</artifactId>\n      <version>${openshift.client.version}</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>org.arquillian.cube</groupId>\n      <artifactId>arquillian-cube-requirement</artifactId>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>org.arquillian.cube</groupId>\n      <artifactId>arquillian-cube-openshift</artifactId>\n      <exclusions>\n        <exclusion>\n          <groupId>org.apache.httpcomponents</groupId>\n          <artifactId>httpclient-osgi</artifactId>\n        </exclusion>\n      </exclusions>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>org.jboss.arquillian.junit</groupId>\n      <artifactId>arquillian-junit-standalone</artifactId>\n      <version>${arquillian.version}</version>\n      <scope>test</scope>\n    </dependency>\n  </dependencies>\n  <build>\n    <pluginManagement>\n      <plugins>\n        <plugin>\n          <groupId>io.fabric8</groupId>\n          <artifactId>fabric8-maven-plugin</artifactId>\n          <version>${fmp.version}</version>\n        </plugin>\n      </plugins>\n    </pluginManagement>\n    <plugins>\n      <!-- Core plugins -->\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-compiler-plugin</artifactId>\n        <version>3.7.0</version>\n        <configuration>\n          <source>1.8</source>\n          <target>1.8</target>\n        </configuration>\n      </plugin>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-surefire-plugin</artifactId>\n        <version>2.22.0</version>\n        <inherited>true</inherited>\n        <configuration>\n          <excludes>\n            <exclude>**/*KT.java</exclude>\n          </excludes>\n        </configuration>\n      </plugin>\n      <plugin>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-maven-plugin</artifactId>\n        <version>${spring-boot.version}</version>\n        <configuration>\n          <classifier>exec</classifier>\n        </configuration>\n        <executions>\n          <execution>\n            <goals>\n              <goal>repackage</goal>\n            </goals>\n          </execution>\n        </executions>\n      </plugin>\n    </plugins>\n  </build>\n  <repositories>\n    <repository>\n      <id>redhat-ga-repository</id>\n      <url>https://maven.repository.redhat.com/ga</url>\n      <releases />\n      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n    </repository>\n    <repository>\n      <id>redhat-ea-repository</id>\n      <url>https://maven.repository.redhat.com/earlyaccess/all</url>\n      <releases />\n      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n    </repository>\n  </repositories>\n  <pluginRepositories>\n    <pluginRepository>\n      <id>redhat-ga-repository</id>\n      <url>https://maven.repository.redhat.com/ga</url>\n      <releases />\n      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n    </pluginRepository>\n    <pluginRepository>\n      <id>redhat-ea-repository</id>\n      <url>https://maven.repository.redhat.com/earlyaccess/all</url>\n      <releases />\n      <snapshots>\n        <enabled>false</enabled>\n      </snapshots>\n    </pluginRepository>\n  </pluginRepositories>\n  <profiles>\n    <profile>\n      <id>openshift</id>\n      <build>\n        <plugins>\n          <plugin>\n            <groupId>io.fabric8</groupId>\n            <artifactId>fabric8-maven-plugin</artifactId>\n            <executions>\n              <execution>\n                <goals>\n                  <goal>resource</goal>\n                  <goal>build</goal>\n                </goals>\n              </execution>\n            </executions>\n          </plugin>\n        </plugins>\n      </build>\n      <activation />\n    </profile>\n  </profiles>\n</project>\n\n"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+didChange: VersionedTextDocumentIdentifier [
+  version = 2
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+completion: file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml
+Exception while trying to parse the file
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:257)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.hasElementFromCamelNamespace(ParserXMLFileHelper.java:97)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.getCorrespondingCamelNodeForCompletion(ParserXMLFileHelper.java:81)
+	at com.github.cameltooling.lsp.internal.parser.ParserFileHelperFactory.getCorrespondingParserFileHelper(ParserFileHelperFactory.java:26)
+	at com.github.cameltooling.lsp.internal.completion.CamelEndpointCompletionProcessor.getCompletions(CamelEndpointCompletionProcessor.java:49)
+	at com.github.cameltooling.lsp.internal.CamelTextDocumentService.completion(CamelTextDocumentService.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:61)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:116)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:257)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:186)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:188)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:90)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:95)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+didChange: VersionedTextDocumentIdentifier [
+  version = 4
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+completion: file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml
+Exception while trying to parse the file
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:257)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.hasElementFromCamelNamespace(ParserXMLFileHelper.java:97)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.getCorrespondingCamelNodeForCompletion(ParserXMLFileHelper.java:81)
+	at com.github.cameltooling.lsp.internal.parser.ParserFileHelperFactory.getCorrespondingParserFileHelper(ParserFileHelperFactory.java:26)
+	at com.github.cameltooling.lsp.internal.completion.CamelEndpointCompletionProcessor.getCompletions(CamelEndpointCompletionProcessor.java:49)
+	at com.github.cameltooling.lsp.internal.CamelTextDocumentService.completion(CamelTextDocumentService.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:61)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:116)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:257)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:186)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:188)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:90)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:95)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+didChange: VersionedTextDocumentIdentifier [
+  version = 5
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+completion: file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml
+Exception while trying to parse the file
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:257)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.hasElementFromCamelNamespace(ParserXMLFileHelper.java:97)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.getCorrespondingCamelNodeForCompletion(ParserXMLFileHelper.java:81)
+	at com.github.cameltooling.lsp.internal.parser.ParserFileHelperFactory.getCorrespondingParserFileHelper(ParserFileHelperFactory.java:26)
+	at com.github.cameltooling.lsp.internal.completion.CamelEndpointCompletionProcessor.getCompletions(CamelEndpointCompletionProcessor.java:49)
+	at com.github.cameltooling.lsp.internal.CamelTextDocumentService.completion(CamelTextDocumentService.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:61)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:116)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:257)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:186)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:188)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:90)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:95)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+didChange: VersionedTextDocumentIdentifier [
+  version = 6
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+completion: file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml
+Exception while trying to parse the file
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:257)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.hasElementFromCamelNamespace(ParserXMLFileHelper.java:97)
+	at com.github.cameltooling.lsp.internal.parser.ParserXMLFileHelper.getCorrespondingCamelNodeForCompletion(ParserXMLFileHelper.java:81)
+	at com.github.cameltooling.lsp.internal.parser.ParserFileHelperFactory.getCorrespondingParserFileHelper(ParserFileHelperFactory.java:26)
+	at com.github.cameltooling.lsp.internal.completion.CamelEndpointCompletionProcessor.getCompletions(CamelEndpointCompletionProcessor.java:49)
+	at com.github.cameltooling.lsp.internal.CamelTextDocumentService.completion(CamelTextDocumentService.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:61)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:116)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:257)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:186)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:188)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:90)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:95)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+didChange: VersionedTextDocumentIdentifier [
+  version = 7
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/pom.xml"
+]
+SERVER: changeWatchedFiles: size -> 1
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/Application.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class Application {\n\n    /**\n     * Main method to start the application.\n     */\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n\n}"
+]
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\nimport org.apache.camel.builder.RouteBuilder;\nimport org.apache.camel.model.rest.RestBindingMode;\nimport org.springframework.stereotype.Component;\n\n/**\n * A simple Camel REST DSL route that implements the greetings service.\n * \n */\n@Component\npublic class CamelRouter extends RouteBuilder {\n\n\n    @Override\n    public void configure() throws Exception {\n\n        // @formatter:off\n        restConfiguration()\n            .component("servlet")\n            .bindingMode(RestBindingMode.json);\n        \n        rest("/greetings/").description("Greeting to configured name")\n            .get("/").outType(Greetings.class)\n                .route().routeId("greeting-api")\n                .setHeader("name", simple("${properties:booster.nameToGreet}"))\n                .to("direct:greetingsImpl");\n\n        from("direct:greetingsImpl").description("Greetings REST service implementation route")\n            .streamCaching()\n            .to("bean:greetingsService?method=getGreetings");     \n        // @formatter:on\n    }\n\n}"
+]
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/Greetings.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\n/**\n * Greetings entity\n *\n */\npublic class Greetings {\n\n    private String greetings;\n\n    public Greetings() {\n    }\n\n    public Greetings(String greetings) {\n        this.greetings = greetings;\n    }\n\n    public String getGreetings() {\n        return greetings;\n    }\n\n    public void setGreetings(String greetings) {\n        this.greetings = greetings;\n    }\n\n}"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/Greetings.java"
+]
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/GreetingsService.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\n/**\n * Service interface for name service.\n * \n */\npublic interface GreetingsService {\n\n    /**\n     * Generate Greetings\n     *\n     * @return a string greetings\n     */\n    Greetings getGreetings( String name);\n\n}"
+]
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/GreetingsServiceImpl.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\nimport org.apache.camel.Header;\nimport org.springframework.stereotype.Service;\n\n@Service("greetingsService")\npublic class GreetingsServiceImpl implements GreetingsService {\n\n    private static final String THE_GREETINGS = "Hello, ";\n\n    @Override\n    public Greetings getGreetings(@Header("name") String name ) {\n        return new Greetings( THE_GREETINGS + name );\n    }\n\n}"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/GreetingsServiceImpl.java"
+]
+didOpen: TextDocumentItem [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/IndexRootMapper.java"
+  languageId = "java"
+  version = 1
+  text = "/**\n *  Copyright 2005-2016 Red Hat, Inc.\n *\n *  Red Hat licenses this file to you under the Apache License, version\n *  2.0 (the "License"); you may not use this file except in compliance\n *  with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n *  Unless required by applicable law or agreed to in writing, software\n *  distributed under the License is distributed on an "AS IS" BASIS,\n *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n *  implied.  See the License for the specific language governing\n *  permissions and limitations under the License.\n */\npackage com.redhat.fuse.boosters.configmap;\n\nimport org.springframework.context.annotation.ComponentScan;\nimport org.springframework.context.annotation.Configuration;\nimport org.springframework.web.servlet.config.annotation.ViewControllerRegistry;\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;\n\n@Configuration\n@ComponentScan\npublic class IndexRootMapper extends WebMvcConfigurerAdapter {\n\n    @Override\n    public void addViewControllers(ViewControllerRegistry registry) {\n        registry.addViewController("/").setViewName("forward:/configmap-index.html");\n    }\n}"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/IndexRootMapper.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+hover: TextDocumentIdentifier [
+  uri = "file:///home/rick/Tools/A/Container_Stuff/Che_AppDevelopment/Camel-SpringBoot-From-OLStarter/camel-spring-boot1/src/main/java/com/redhat/fuse/boosters/configmap/CamelRouter.java"
+]
+Shutting down language server
+Stopping language server
